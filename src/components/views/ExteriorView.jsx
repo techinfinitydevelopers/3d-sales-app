@@ -137,24 +137,24 @@ function HotspotPin({ hotspot, onSelect, isActive, visible }) {
   if (!visible) return null
 
   return (
-    <Html position={hotspot.position} center distanceFactor={24}>
+    <Html position={hotspot.position} center zIndexRange={[100, 0]}>
       <div
         onClick={() => onSelect(hotspot)}
         style={{ fontFamily: 'Montserrat, sans-serif' }}
         className="flex flex-col items-center cursor-pointer select-none group"
       >
         {/* Outer ping ring */}
-        <div className="relative flex items-center justify-center w-10 h-10">
+        <div className="relative flex items-center justify-center w-16 h-16">
           <span
-            className="absolute w-10 h-10 rounded-full animate-ping opacity-25"
+            className="absolute w-16 h-16 rounded-full animate-ping opacity-25"
             style={{ border: `2px solid ${c.color}` }}
           />
           {/* Inner dot */}
           <span
-            className="relative w-6 h-6 rounded-full flex items-center justify-center text-sm shadow-xl z-10 transition-transform duration-200 group-hover:scale-110"
+            className="relative w-10 h-10 rounded-full flex items-center justify-center text-xl shadow-xl z-10 transition-transform duration-200 group-hover:scale-110"
             style={{
               background: isActive ? c.color : `${c.color}cc`,
-              boxShadow: isActive ? `0 0 16px ${c.color}88` : 'none',
+              boxShadow: isActive ? `0 0 22px ${c.color}88` : 'none',
             }}
           >
             {hotspot.icon}
@@ -163,19 +163,19 @@ function HotspotPin({ hotspot, onSelect, isActive, visible }) {
 
         {/* Label chip */}
         <div
-          className="mt-1.5 px-2.5 py-1 bg-stone-950/90 backdrop-blur-sm transition-all duration-200 whitespace-nowrap"
+          className="mt-2 px-3 py-1.5 bg-stone-950/90 backdrop-blur-sm transition-all duration-200 whitespace-nowrap"
           style={{
             border: `1px solid ${isActive ? c.color : '#57534e'}`,
-            boxShadow: isActive ? `0 0 10px ${c.color}44` : 'none',
+            boxShadow: isActive ? `0 0 12px ${c.color}44` : 'none',
           }}
         >
           <div
-            className="text-[9px] tracking-widest font-semibold"
+            className="text-[13px] tracking-widest font-semibold"
             style={{ color: isActive ? c.color : '#e7e5e4' }}
           >
             {hotspot.label}
           </div>
-          <div className="text-[8px] text-stone-500 text-center tracking-wide mt-0.5">
+          <div className="text-[11px] text-stone-500 text-center tracking-wide mt-0.5">
             {hotspot.sublabel}
           </div>
         </div>
